@@ -25,8 +25,6 @@ echo 'Outgoing transfer: '.$outtransfer2.' PLN<br>';
 echo '<b>The account balance after the transfer: '.$balance.' PLN</br></b>';
 if ($balance < 0){
 echo "You have an overdraft!";
-} else{ 
-echo "Your expenses exceed income!";
 }
 ?>
 
