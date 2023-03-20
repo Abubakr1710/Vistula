@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$t = date("H");
+
+if ($t < "5"){
+	echo "Go to bed, idiot";
+} elseif ($t < "20"){
+	echo "Have a good day";
+} else {
+	echo "Go to your bed, idiot";
+}
+?> 
+
+</body>
+</html>

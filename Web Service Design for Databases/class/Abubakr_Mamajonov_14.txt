@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<?php
+for ($x = 0; $x <=10; $x++){
+	echo "The number is: $x <br>";
+}// adding 1 to x untill 10
+?>
+
+<?php
+for ($x = 0; $x <=100; $x+=10){
+	echo "The number is: $x <br>";
+}//adding 10 to x until 100
+?>
+
+<?php
+// Leap year
+for ($x = 2004; $x <= date(Y); $x= $x+4){
+	echo "Leap Years : $x <br>"; 
+} 
+?>
+</body>
+</html>

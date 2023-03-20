@@ -1,0 +1,13 @@
+<html>
+<body>
+<?php
+date_default_timezone_set("Asia/Tashkent"); //current time in Tashkent
+echo "The time is " . date("H:i:s"); //It will print the time
+echo "<br>Today is " . date("Y.m.d") . "<br>"; //current, year, month, day  with .
+echo "Today is " . date("Y-m-d") . "<br>"; //same but with -
+echo "Today is " . date("l"); //day name like monday pr tuesday
+$d=mktime(20, 30, 40, 17, 10, 2020); #creating time but structure vice versa, it will start from seconds and ends with year.
+echo "<br>Created date is " . date("Y-m-d h:i:s", $d);//printing 
+?>
+</body>
+</html>

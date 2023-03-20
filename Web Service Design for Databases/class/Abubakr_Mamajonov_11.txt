@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$year = 2004;
+$now = date("Y");
+while ($year <= $now){
+	echo "Leap year: $year <br>";
+    $year  = $year + 4;
+}
+	
+?> 
+
+</body>
+</html>

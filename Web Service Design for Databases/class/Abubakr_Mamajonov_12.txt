@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$num = rand(2,5);
+
+switch($num){
+	case '2':
+    	echo "Insufficient";
+        break;
+    case '3':
+    	echo "Sufficient";
+        break;
+    case '4':
+    	echo "Good";
+        break;
+    case '5':
+    	echo "Very Good";
+        break;
+    default:
+    	echo "Grade between 2 and 5";
+}
+	
+?> 
+
+</body>
+</html>
