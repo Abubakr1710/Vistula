@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Online Banking Solution</h2>
+<?php
+$userName = "Jan Nowak";
+echo 'The owner of the account: '.$userName.'<br>';
+$accountBalance=1356.58;
+echo 'The account balance is: '.$accountBalance.' PLN<br>';
+$transferAmount=256.45;
+echo 'Incoming transfer amount: '.$transferAmount.' PLN<br>';
+$balance= ($accountBalance+$transferAmount);
+$transferincoming=125.98;
+echo 'Incoming transfer amount: '.$transferincoming.' PLN<br>';
+$balance=$balance+$transferincoming;
+$outtransfer=1230.87;
+$balance=($balance-$outtransfer);
+echo 'Outgoing transfer: '.$outtransfer.' PLN<br>';
+$incomingtransfer2=1000.80;
+$balance=($balance+$incomingtransfer2);
+echo 'Incoming transfer: '.$incomingtransfer2.' PLN<br>';
+$outtransfer2=1076.90;
+$balance=($balance-$outtransfer2);
+echo 'Outgoing transfer: '.$outtransfer2.' PLN<br>';
+echo '<b>The account balance after the transfer: '.$balance.' PLN</br></b>';
+if ($balance < 0){
+echo "You have an overdraft!";
+} else{ 
+echo "Your expenses exceed income!";
+}
+?>
+
+</body>
+</html>
