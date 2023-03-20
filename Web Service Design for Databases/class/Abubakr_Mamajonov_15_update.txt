@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Online Banking Solution</h2>
+<?php
+
+//if I change my code into 3 variable version like yours, it can be similar to yours.
+// But I can do, If I want.
+$userName = "Jan Nowak";
+echo 'The owner of the account: '.$userName.'<br>';
+$accountBalance=1356.58;
+echo 'The account balance is: '.$accountBalance.' PLN<br>';
+$transferAmount=256.45;
+$transferbalance = $transferAmount;
+echo 'Incoming transfer amount: '.$transferAmount.' PLN<br>';
+$balance= ($accountBalance+$transferAmount);
+$transferincoming=125.98;
+$transferbalance += $transferincoming;
+echo 'Incoming transfer amount: '.$transferincoming.' PLN<br>';
+$balance=$balance+$transferincoming;
+$outtransfer=1230.87;
+$transferbalance -= $outtransfer;
+$transferbalance += transferbalance + $transferincoming;
+$balance=($balance-$outtransfer);
+echo 'Outgoing transfer: '.$outtransfer.' PLN<br>';
+$incomingtransfer2=1000.80;
+$transferbalance += $incomingtransfer2;
+$balance=($balance+$incomingtransfer2);
+echo 'Incoming transfer: '.$incomingtransfer2.' PLN<br>';
+$outtransfer2=2076.90;
+$transferbalance -=$outtransfer2;
+$balance=($balance-$outtransfer2);
+echo 'Outgoing transfer: '.$outtransfer2.' PLN<br>';
+echo '<b>The account balance after the transfer: '.$balance.' PLN</br></b>';
+if ($balance < 0){
+echo "You have an overdraft!<br>";
+}
+if ($transferbalance < 0){
+echo "Your expenses exceeded incomes!<br>";
+}
+?>
+
+</body>
+</html>
