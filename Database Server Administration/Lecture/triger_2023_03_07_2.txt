@@ -1,0 +1,14 @@
+use ml20230307_A2
+go
+
+
+insert into bank_from (id_account_1,id_account_2,[value])
+values (1,1,100);
+
+select * from bank_from
+
+select * from account_1
+
+select * from account_2
+
+select * from bank_to

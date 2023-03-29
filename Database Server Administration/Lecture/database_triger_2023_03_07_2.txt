@@ -1,0 +1,129 @@
+USE [ml20230307_A2]
+GO
+/****** Object:  Table [dbo].[account_1]    Script Date: 07.03.2023 20:40:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[account_1](
+	[id_account_1] [int] IDENTITY(1,1) NOT NULL,
+	[value] [float] NULL,
+	[id_p] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_account_1] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[account_2]    Script Date: 07.03.2023 20:40:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[account_2](
+	[id_account_2] [int] IDENTITY(1,1) NOT NULL,
+	[value] [float] NULL,
+	[id_p] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_account_2] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[bank_from]    Script Date: 07.03.2023 20:40:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[bank_from](
+	[id_bank] [int] IDENTITY(1,1) NOT NULL,
+	[id_account_1] [int] NULL,
+	[id_account_2] [int] NULL,
+	[value] [float] NULL,
+	[date] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_bank] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[bank_to]    Script Date: 07.03.2023 20:40:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[bank_to](
+	[id_bank] [int] IDENTITY(1,1) NOT NULL,
+	[id_account_1] [int] NULL,
+	[id_account_2] [int] NULL,
+	[value] [float] NULL,
+	[date] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_bank] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[account_1] ON 
+
+INSERT [dbo].[account_1] ([id_account_1], [value], [id_p]) VALUES (1, 900, 1)
+SET IDENTITY_INSERT [dbo].[account_1] OFF
+GO
+SET IDENTITY_INSERT [dbo].[account_2] ON 
+
+INSERT [dbo].[account_2] ([id_account_2], [value], [id_p]) VALUES (1, 100, 2)
+SET IDENTITY_INSERT [dbo].[account_2] OFF
+GO
+SET IDENTITY_INSERT [dbo].[bank_from] ON 
+
+INSERT [dbo].[bank_from] ([id_bank], [id_account_1], [id_account_2], [value], [date]) VALUES (1, 1, 1, 100, CAST(N'2023-03-07T20:32:16.607' AS DateTime))
+SET IDENTITY_INSERT [dbo].[bank_from] OFF
+GO
+SET IDENTITY_INSERT [dbo].[bank_to] ON 
+
+INSERT [dbo].[bank_to] ([id_bank], [id_account_1], [id_account_2], [value], [date]) VALUES (1, 1, 1, 100, CAST(N'2023-03-07T20:32:16.643' AS DateTime))
+SET IDENTITY_INSERT [dbo].[bank_to] OFF
+GO
+ALTER TABLE [dbo].[bank_from] ADD  DEFAULT (getdate()) FOR [date]
+GO
+ALTER TABLE [dbo].[bank_to] ADD  DEFAULT (getdate()) FOR [date]
+GO
+ALTER TABLE [dbo].[bank_from]  WITH CHECK ADD FOREIGN KEY([id_account_1])
+REFERENCES [dbo].[account_1] ([id_account_1])
+GO
+ALTER TABLE [dbo].[bank_from]  WITH CHECK ADD FOREIGN KEY([id_account_2])
+REFERENCES [dbo].[account_2] ([id_account_2])
+GO
+ALTER TABLE [dbo].[bank_to]  WITH CHECK ADD FOREIGN KEY([id_account_1])
+REFERENCES [dbo].[account_1] ([id_account_1])
+GO
+ALTER TABLE [dbo].[bank_to]  WITH CHECK ADD FOREIGN KEY([id_account_2])
+REFERENCES [dbo].[account_2] ([id_account_2])
+GO
+/****** Object:  Trigger [dbo].[bank_from_insert]    Script Date: 07.03.2023 20:40:08 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TRIGGER [dbo].[bank_from_insert]
+   ON  [dbo].[bank_from]
+   AFTER INSERT
+AS 
+BEGIN
+update account_1 set account_1.[value]=account_1.[value]-bank_from.[value]
+from account_1 INNER JOIN
+bank_from ON account_1.id_account_1 = bank_from.id_account_1
+where bank_from.id_bank=ident_current('bank_from');
+
+update account_2 set account_2.[value]=account_2.[value]+bank_from.[value]
+from account_2 INNER JOIN
+bank_from ON account_2.id_account_2 = bank_from.id_account_2
+where bank_from.id_bank=ident_current('bank_from');
+
+insert into bank_to (id_account_1,id_account_2,[value]) 
+select id_account_1,id_account_2,[value] from bank_from 
+where id_bank=ident_current('bank_from');
+END
+GO
+ALTER TABLE [dbo].[bank_from] ENABLE TRIGGER [bank_from_insert]
+GO

@@ -1,0 +1,41 @@
+use sol_20230307
+
+SELECT
+name, object_id, create_date, modify_date, *
+FROM
+sys.tables
+
+SELECT system_type_id, name as datatype
+FROM sys.types
+WHERE system_type_id = user_type_id
+
+SELECT s.name as schema_name, t.name as table_name, c.* FROM sys.columns AS c
+INNER JOIN sys.tables AS t ON t.object_id = c.object_id
+INNER JOIN sys.schemas AS s ON s.schema_id = t.schema_id
+WHERE t.name = 'employee' AND s.name = 'dbo';
+
+
+
+SELECT c.column_id, c.name, c.user_type_id, c.max_length, c.precision
+--into t_w
+FROM sys.columns AS c
+INNER JOIN sys.tables AS t ON t.object_id = c.object_id
+INNER JOIN sys.schemas AS s ON s.schema_id = t.schema_id
+WHERE t.name = 'employee' AND s.name = 'dbo';
+
+SELECT system_type_id, name as datatype into data_type
+FROM sys.types
+WHERE system_type_id = user_type_id
+
+SELECT        t_w.name, data_type.datatype, t_w.max_length into data_table
+FROM            data_type INNER JOIN
+                         t_w ON data_type.system_type_id = t_w.user_type_id
+
+
+select * from data_table
+
+exec r_write_table
+
+--insert into employee_new (birthdate,firstname,lastname,jobtitle,gender) select birthdate,firstname,lastname,jobtitle,gender from employee
+
+select * from employee_new

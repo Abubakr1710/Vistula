@@ -1,0 +1,61 @@
+use ml20230307_A1
+go
+create table account_1 (
+id_account_1 int identity primary key,
+value float,
+id_p int
+)
+go
+create table account_2 (
+id_account_2 int identity primary key,
+value float,
+id_p int
+)
+go
+create table bank_from (
+id_bank int identity primary key,
+id_account_1 int foreign key references account_1 (id_account_1),
+id_account_2 int foreign key references account_2,
+value float,
+[date] DATETIME DEFAULT CURRENT_TIMESTAMP
+) 
+go
+create table bank_to (
+id_bank int identity primary key,
+id_account_1 int foreign key references account_1,
+id_account_2 int foreign key references account_2,
+value float,
+[date] DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+go
+insert into account_1 values (0,1)
+
+insert into account_2 values (0,2)
+select *  from account_1
+
+select *  from account_2
+
+update account_1 set value=1000 where id_account_1=1
+
+insert into bank_from (id_account_1,id_account_2,[value])
+values (1,1,50)
+
+select * from bank_from
+
+
+select @@identity
+
+select ident_current('bank_to')
+
+insert into bank_from (id_account_1,id_account_2,[value])
+values (1,1,100)
+
+
+select * from bank_to
+/*
+insert into table1 (field1,field2,...) 
+select field_a1,field_a2,...from table2 where ...
+*/
+
+insert into bank_from (id_account_1,id_account_2,[value])
+values (1,1,100);
