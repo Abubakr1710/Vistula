@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$dice = rand(1,6);
+echo "First move: ".$dice."<br>";
+$totalsum = $dice;
+$dice = rand(1,6);
+echo "Second move: ".$dice."<br>";
+$totalsum = $totalsum + $dice;
+$dice = rand(1,6);
+echo "Third move: ".$dice."<br>";
+$totalsum = $totalsum + $dice;
+echo "Total sum: ".$totalsum."<br>";
+?> 
+
+</body>
+</html>
