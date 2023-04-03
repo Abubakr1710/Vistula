@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$dice = rand(1,6);
+echo "First move: ".$dice."<br>";
+$totalsum = $dice;
+if ($dice == 6){
+$totalsum = $totalsum+1;
+}
+$dice = rand(1,6);
+echo "Second move: ".$dice."<br>";
+$totalsum = $totalsum + $dice;
+if ($dice == 6){
+$totalsum = $totalsum+1;
+}
+$dice = rand(1,6);
+echo "Third move: ".$dice."<br>";
+$totalsum = $totalsum + $dice;
+if ($dice == 6){
+$totalsum = $totalsum+1;
+}
+echo "Total sum: ".$totalsum."<br>";
+?> 
+
+</body>
+</html>
