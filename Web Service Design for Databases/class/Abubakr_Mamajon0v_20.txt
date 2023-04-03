@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$cars = array(
+	array("Volvo", 22, 18),
+    array("BMW", 15, 11),
+    array("Saab", 5, 2),
+    array("Land Rover", 17, 15),
+    array("Ford", 12, 9),
+    array("Chevrolet", 8, 6)
+);
+
+echo json_encode($cars);
+?> 
+
+</body>
+</html>
+
