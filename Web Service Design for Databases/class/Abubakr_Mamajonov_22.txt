@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+class Rectangle{
+	public $a;
+    public $b;
+    
+    function set_side($a,$b){
+    	$this->a=$a;
+        $this->b=$b;
+    }
+    
+    function get_area(){
+    	return $this->a * $this->b;
+    }
+}
+$rect = new Rectangle();
+$rect->set_side(4,8);
+echo "Area: " . $rect->get_area() . "<br>";
+?> 
+
+</body>
+</html>
