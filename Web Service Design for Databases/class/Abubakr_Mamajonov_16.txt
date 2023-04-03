@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+function familyName($fname){
+	echo "$fname Potter<br>";
+}
+
+familyName("James");
+familyName("Lily");
+familyName("Harry");
+
+#This function will add Potter as a Surname to given names
+?> 
+
+</body>
+</html>
