@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$cars = array("Volvo","BMW","Toyota");#array or list
+echo "I like ".$cars[0].", ".$cars[1]." and ".$cars[2].".<br>";
+echo "Total cars: ".count($cars)."<br>";#counting elements of array
+$arrlength = count($cars);
+
+for ($x = 0; $x < $arrlength; $x++){
+	echo $cars[$x];
+	echo "<br>";
+    #prints elements one by one
+}
+?> 
+
+</body>
+</html>
+
