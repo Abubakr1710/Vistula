@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+class Product{
+	# Properties
+    public $name;
+    public $description;
+    public $price;
+    
+    #Methods
+    function set_name($name){
+    	$this->name = $name;
+    }
+    function get_name(){
+    	return $this->name;
+    }
+    function set_description($description){
+    	$this->description = $description;
+    }
+    function get_description(){
+    	return $this->description;
+    }
+    function set_price($price){
+    	$this->price = $price; 
+    }
+    function get_price(){
+    	return $this->price;
+    }
+}
+
+$sneakers = new Product();
+$sneakers->set_name('Nike AirMax');
+$sneakers->set_description('One of the the best sneakers in the world. Available Size: 39-40-41-42-43-44');
+$sneakers->set_price('399.99');
+echo "Name: ". $sneakers->get_name()."<br>";
+echo "<br>";
+echo "Description: ". $sneakers->get_description()."<br>";
+echo "<br>";
+echo "Price: ". $sneakers->get_price()." PLN";
+?> 
+
+</body>
+</html>
