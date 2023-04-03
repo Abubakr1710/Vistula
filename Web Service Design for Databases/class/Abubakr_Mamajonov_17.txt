@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+function city_year($city, $year){
+	echo "$city was established in $year <br>";
+    if ($year < 1001){
+        echo "$city is a very old town <br>";
+    }
+}
+city_year("Gdynia","1926");
+city_year("Krakow","1000");
+city_year("Lodz","1423");
+?> 
+
+</body>
+</html>
+
