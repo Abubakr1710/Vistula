@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$dicerollnum=3;
+$bonusforsix=5;
+$lastresult = 0;
+// For loop
+for ($x = 0; $x <= $dicerollnum-1; $x++) {
+$result=rand(1,6);
+echo 'Roll of dice result: '.$result.'<br>';
+if ($result==6) {
+$total+=($result+$bonusforsix);
+$lastresult = $total;}
+else {
+$lastresult += $result;}
+}
+echo '<b>The result of a game is: '.$lastresult.'<br></b>';
+?> 
+</body>
+</html>
