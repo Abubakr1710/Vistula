@@ -1,0 +1,111 @@
+Answer 1.
+
+    <!DOCTYPE html>
+    <html>
+    <body>
+
+    <?php
+    $cars = array(
+        array("Volvo", 22, 18),
+        array("BMW", 15, 13),
+        array("Saab", 5, 2),
+        array("Land Rover", 16, 15)
+    );
+
+    // For loop through the $cars array
+    for ($i = 0; $i < count($cars); $i++) {
+        echo $cars[$i][0] . ": "; // Display the car brand
+        
+        // Checking if the car is in stock
+        if ($cars[$i][1] > 0) {
+            echo "In stock: " . $cars[$i][1];
+        } else {
+            echo "Out of stock";
+        }
+        
+        // Checking if the car has been sold
+        if ($cars[$i][2] > 0) {
+            echo ", Sold: " . $cars[$i][2];
+        } else {
+            echo ", Not sold yet";
+        }
+        
+        echo "<br>"; // Add a line break after each car
+    }
+    ?> 
+
+    </body>
+    </html>
+
+
+#--------------------------------------------------------------------------------------------#
+Answer 2.
+
+    <?php
+    $cars = array(
+        array("Volvo", 22, 18),
+        array("BMW", 15, 13),
+        array("Saab", 5, 2),
+        array("Land Rover", 16, 15)
+    );
+
+    // Creating an empty array to hold the associative array
+    $associativearray = array();
+
+    // Transforming the array into an associative array
+    foreach ($cars as $car) {
+        $associativearray[] = array(
+            "Brand" => $car[0],
+            "Stock" => $car[1],
+            "Sold" => $car[2]
+        );
+    }
+
+    // Encoding the associative array into JSON
+    $json = json_encode($associativearray);
+
+    // Display the JSON output
+    echo $json;
+    ?>
+
+
+#--------------------------------------------------------------------------------------------#
+Answer 3.
+    I
+    REST-API: waiter
+    Backend: cook
+    Frontend: consumer
+
+    II
+    in a simple and flexible way without processing.
+
+    III 
+    False
+
+#--------------------------------------------------------------------------------------------#
+Answer 4.
+    A request is sent from client to server in the form of web URL as HTTP GET or POST or PUT or DELETE request.
+
+
+#--------------------------------------------------------------------------------------------#
+Answer 5.
+    an object
+
+
+#--------------------------------------------------------------------------------------------#
+Answer 6.
+    an array
+
+
+#--------------------------------------------------------------------------------------------#
+Answer 7.
+    127, 143
+
+
+#--------------------------------------------------------------------------------------------#
+Answer 8.
+    <?php for ($x = 0; $x <= 100; $x+=20) {echo "The number is: $x <br>";}?>
+
+
+
+
