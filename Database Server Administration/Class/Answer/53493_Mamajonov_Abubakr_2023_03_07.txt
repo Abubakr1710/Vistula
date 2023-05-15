@@ -1,0 +1,27 @@
+-- Database for the task with my ID
+USE EN52493_07_03_2023;
+
+--I added database that is given in Platon.
+-- Creating a new table with the desired column order and primary key
+CREATE TABLE dbo.EMPLOYEE_NEW (
+    ID_EMPLOYEE INT IDENTITY(1,1) PRIMARY KEY,
+    BirthDate DATE,
+    Gender CHAR(1),
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    JobTitle VARCHAR(50)
+);
+
+-- Inserting data from the original table into the new table
+INSERT INTO dbo.EMPLOYEE_NEW (BirthDate, Gender, FirstName, LastName, JobTitle)
+SELECT BirthDate, Gender, FirstName, LastName, JobTitle
+FROM dbo.EMPLOYEE;
+
+-- Dropping the original table
+DROP TABLE dbo.EMPLOYEE;
+
+-- Renaming the new table to the original table name
+EXEC sp_rename 'dbo.EMPLOYEE_NEW', 'EMPLOYEE';
+
+-- Retrieving and displaying records from the modified "EMPLOYEE" table
+SELECT * FROM dbo.EMPLOYEE;
