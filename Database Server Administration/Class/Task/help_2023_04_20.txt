@@ -1,0 +1,6 @@
+Create PROCEDURE [dbo].[rnd_v]
+@x int, @y int, @z int output
+AS
+BEGIN
+set @z=cast(rand()*(@x-@y+1)+@y as int)
+END
