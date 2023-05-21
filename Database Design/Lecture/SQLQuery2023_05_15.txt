@@ -1,0 +1,46 @@
+use ml20230515D_1
+
+create table #test_table (
+id int identity primary key,
+[name] varchar(40),
+)
+
+insert into #test_table ([name]) values ('test1'),
+('test2'),
+('test3'),
+('test4'),
+('test5')
+
+select * from #test_table
+
+drop table #test_table
+
+create table product (
+id_product int identity primary key,
+[name] varchar(100),
+price float(10),
+[date] datetime default current_timestamp,
+[time] timestamp
+)
+
+insert into product ([name],price) values ('rrrrrrrrrr1',1000)
+
+select * from product
+
+select * from product_copy
+
+delete from product where id_product=3
+
+create schema test
+
+create table xyz (
+id int identity primary key,
+name_1 varchar(20)
+)
+
+alter schema test transfer dbo.xyz
+
+alter schema dbo transfer test.xyz
+--customer
+--seles
+---
