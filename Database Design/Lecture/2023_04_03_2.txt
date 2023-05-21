@@ -1,0 +1,20 @@
+use ml20230403
+
+select * from [order]
+
+select * from product
+
+create view total_p
+as
+SELECT  COUNT([order].id_product) AS no_product, 
+[order].id_product, order_1.id_product AS product_1, product.product, product.price, 
+product_1.id_product AS product_11, product_1.price AS price_1, COUNT([order].id_product) 
+                         * product.price + product_1.price AS Total
+FROM            [order] INNER JOIN
+                         [order] AS order_1 ON [order].id_order_info = order_1.id_order_info AND [order].id_product > order_1.id_product INNER JOIN
+                         product ON [order].id_product = product.id_product INNER JOIN
+                         product AS product_1 ON order_1.id_product = product_1.id_product
+GROUP BY [order].id_product, order_1.id_product, product.product, product.price, product_1.id_product, product_1.price, product_1.product
+
+select * from total_p
+ORDER BY total DESC
