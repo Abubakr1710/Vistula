@@ -1,0 +1,44 @@
+declare @id_name int
+exec is_name 'name', @id_name output
+select @id_name
+
+
+select * from name order by id_name
+
+exec add_person 'surname_2_20230427','name_2_20230427',1
+
+select * from person 
+
+select * from [name] order by id_name
+
+select * from [data]
+
+create view  name_name as
+
+
+SELECT        name, id_name
+FROM            NAME
+WHERE        (id_name = 7)
+
+
+create view name_ as
+SELECT        NAME.name, name_name.name AS Expr1, DATA.id_person, DATA.id_data, DATA.id_name
+FROM            DATA INNER JOIN
+                         name_name ON DATA.id_describtion = name_name.id_name INNER JOIN
+                         NAME ON DATA.id_name = NAME.id_name
+
+
+create view surname_ as
+SELECT        surname_name.id_name, DATA.id_describtion, NAME.name, surname_name.name AS Expr1, DATA.id_person, DATA.id_data
+FROM            DATA INNER JOIN
+                         NAME ON DATA.id_name = NAME.id_name INNER JOIN
+                         surname_name ON DATA.id_describtion = surname_name.id_name
+
+
+create view person_name_surname as
+SELECT        PERSON.id_person, PERSON.id_gender, name_.name AS name_1, surname_.name AS surname
+FROM            PERSON INNER JOIN
+                         name_ ON PERSON.id_person = name_.id_person INNER JOIN
+                         surname_ ON PERSON.id_person = surname_.id_person
+
+select * from person_name_surname
