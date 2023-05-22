@@ -12,7 +12,7 @@ body {
     background: #0d6efd;
 }
 
-.signin {
+.signup {
     width: 360px;
     height: min-content;
     padding: 20px;
@@ -20,20 +20,20 @@ body {
     background: #ffffff;
 }
 
-.signin h1 {
+.signup h1 {
     font-size: 36px;
     margin-bottom: 25px;
 }
 
-.signin form {
+.signup form {
     font-size: 20px;
 }
 
-.signin form .form-group {
+.signup form .form-group {
     margin-bottom: 12px;
 }
 
-.signin form input[type="submit"] {
+.signup form input[type="submit"] {
     font-size: 20px;
     margin-top: 15px;
 }
